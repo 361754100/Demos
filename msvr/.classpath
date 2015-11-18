@@ -51,5 +51,6 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/spring-oxm-3.2.7.RELEASE-sources.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/spring-oxm-3.2.7.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jackson-all-1.9.11.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/ehcache-2.10.1.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
