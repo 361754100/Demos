@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+  <display-name>v2s-baidu</display-name>
+
+  <!-- 配置百度AK -->	
+  <context-param>
+  	<param-name>BAIDU_AKS</param-name>
+  	<param-value>
+  			nxemar47mYhP3Rcz2PaD6nPV,0GT3wtsWGQSxi8OGF5VBXMqx,hQvKYxrCvpPRoi1DPGqGslMB,
+			uz2ZSzyaGhLHGFA1E7XQfQMe,Wi8kB8ccmNrcf0Ascxz26zFv,OGUOSVXgLLKUCGiorx6zlYyG,
+			90W8zQmugGQE2ZnDKudMnyHb,wVYZxGWCzrySGF1NGj3uS6Km,16zzAATRIGWgYWWkewrfjcmd,
+			5LAg8OybZo2SR1iFFeSZGpIG,Z7dxnzpAm3OPVq5XaLdlGoCc,Sw8rf5Z4BaUL6eGoanEdx8Qr,
+			Y4RxoGhTLLBT7KChB24cmeId,2PGFU9ZntIkXhGaGR3vYQUvo,VGvIzTCqncMthNSxzC6aGuHy,
+			BD2ZUuGNinrLyncixiRn2xfr,vUO2YQ55DmlPEzgmbDE1iG37,BEVjaqlGGBt8R98AQUEPmOq8,
+			EmUGIDU2b6IPqTi7z8fvyjva,Ap6fSbrp3tCVEVBvPhIMwsUv,UT9GyfUOrlWieepiNzXwTnk0,
+			gMta5YFvz97dKPGR1hLGeR8a,5Bjb42QbNgqERuEzcjr83x9n,HhaFnDRIMYFQyGvK14EIDbRN,
+			Vq1aOMBpMPKx5QGqIAmdaHDa,ieA6Y4zWBOCWpPCV2cwhBjTj,GVtlW6XQZkz7F8qlkhIqpjf2,
+			z9BxGng9RbuVoICPoVKog0V7,KXh9h9Tp9bYON6G66wvsIwPR,nZzqCX3RT7Zk7iMu17gc2a9p
+	</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>BAIDU_MODIFY_AKS</param-name>
+  	<param-value>
+  			nxemar47mYhP3Rcz2PaD6nPV,0GT3wtsWGQSxi8OGF5VBXMqx,hQvKYxrCvpPRoi1DPGqGslMB,
+			uz2ZSzyaGhLHGFA1E7XQfQMe,Wi8kB8ccmNrcf0Ascxz26zFv,OGUOSVXgLLKUCGiorx6zlYyG,
+			90W8zQmugGQE2ZnDKudMnyHb,wVYZxGWCzrySGF1NGj3uS6Km,16zzAATRIGWgYWWkewrfjcmd,
+			5LAg8OybZo2SR1iFFeSZGpIG,Z7dxnzpAm3OPVq5XaLdlGoCc,Sw8rf5Z4BaUL6eGoanEdx8Qr,
+			Y4RxoGhTLLBT7KChB24cmeId,2PGFU9ZntIkXhGaGR3vYQUvo,VGvIzTCqncMthNSxzC6aGuHy,
+			BD2ZUuGNinrLyncixiRn2xfr,vUO2YQ55DmlPEzgmbDE1iG37,BEVjaqlGGBt8R98AQUEPmOq8,
+			EmUGIDU2b6IPqTi7z8fvyjva,Ap6fSbrp3tCVEVBvPhIMwsUv,UT9GyfUOrlWieepiNzXwTnk0,
+			gMta5YFvz97dKPGR1hLGeR8a,5Bjb42QbNgqERuEzcjr83x9n,HhaFnDRIMYFQyGvK14EIDbRN,
+			Vq1aOMBpMPKx5QGqIAmdaHDa,ieA6Y4zWBOCWpPCV2cwhBjTj,GVtlW6XQZkz7F8qlkhIqpjf2,
+			z9BxGng9RbuVoICPoVKog0V7,KXh9h9Tp9bYON6G66wvsIwPR,nZzqCX3RT7Zk7iMu17gc2a9p
+	</param-value>
+  </context-param>
+  
+  <context-param>  
+      <param-name>THREAD_SLEEPTIME</param-name><!-- 百度API请求间歇（单位：毫秒） -->
+      <param-value>500</param-value>  
+  </context-param>
+  <context-param>  
+      <param-name>MAX_TRY_NUMBER</param-name><!-- 一个AK请求失败后再尝试的次数 -->
+      <param-value>10</param-value>  
+  </context-param>
+  
+  <context-param>  
+      <param-name>ORGIDS</param-name><!-- 客户名称 -->
+      <param-value>033,032,034,026,028,030,031,029,027,006,036,024,017,005</param-value>  
+  </context-param>
+  
+  <context-param>
+      <param-name>WORK_TYPE</param-name><!-- 任务类型 -->
+      <param-value></param-value>  
+  </context-param>
+  
+  <context-param>
+      <param-name>TASK_DATE</param-name><!-- 任务类型 -->
+      <param-value>2015-07-27</param-value>  
+  </context-param>
+  
+  <!-- 配置数据源信息 -->
+  <context-param>  
+      <param-name>driverClassName</param-name>  
+      <param-value>oracle.jdbc.driver.OracleDriver</param-value>  
+  </context-param>
+  <context-param>  
+      <param-name>jdbcUrl</param-name>  
+      <param-value>jdbc:oracle:thin:@10.3.2.168:1521:orcl</param-value>  
+  </context-param>
+  <context-param>  
+      <param-name>jdbcUserName</param-name>  
+      <param-value>vspuser</param-value>  
+  </context-param>
+  <context-param>  
+      <param-name>jdbcPassword</param-name>  
+      <param-value>vsp</param-value>  
+  </context-param>
+  
+  <!-- 以下是定时器参数 -->
+  <context-param>  
+      <param-name>ATM_FORECAST_PEROID</param-name><!-- 定时器执行周期 （单位：小时） -->
+      <param-value>72</param-value>  
+  </context-param>
+  <context-param>  
+      <param-name>ATM_FORECAST_STARTTIME</param-name><!-- 每个周期的开始时间点 （时分秒） -->
+      <param-value>00:00:00</param-value>  
+  </context-param>
+  <context-param>  
+      <param-name>ATM_FORECAST_ENDTIME</param-name><!-- 每个周期的开始时间点 （时分秒） -->
+      <param-value>07:00:00</param-value>  
+  </context-param>
+  <context-param>  
+      <param-name>ATM_FORECAST_FIRSTEXEC</param-name><!-- 程序首次允许是否立即进行数据采集（是：yes 否：no） -->
+      <param-value>yes</param-value>  
+  </context-param>
+  <context-param>  
+      <param-name>ATM_LAST_MODIFYDAY</param-name><!-- 程序需要采集几天前更新或新增的ATM数据 -->
+      <param-value>150</param-value>  
+  </context-param>
+  
+  <!-- 业务参数 OPERATE_TYPE: 1 只做新增操作  2 进行新增或更新操作  3 只更新指定设备的百度信息-->
+  <context-param>  
+      <param-name>OPERATE_TYPE</param-name>  
+      <param-value>2</param-value>  
+  </context-param>
+  <context-param>  
+      <param-name>pageNo</param-name>  
+      <param-value>1</param-value>  
+  </context-param>
+  <context-param>  
+      <param-name>pageSize</param-name>  
+      <param-value>100</param-value>  
+  </context-param>
+  <context-param>  
+      <param-name>computer</param-name>  
+      <param-value>127.0.0.1</param-value>  
+  </context-param>
+  
+  <context-param>  
+        <param-name>log4jConfigLocation</param-name>  
+        <!-- <param-value>classpath:log4j.properties</param-value> -->
+        <param-value>/WEB-INF/log4j.properties</param-value>
+    </context-param>  
+    
+  <listener>
+	 <listener-class>
+	   org.springframework.web.util.Log4jConfigListener
+	 </listener-class>
+  </listener>
+    
+  <listener>
+	<listener-class>
+		com.suitong.mp.baidu.servlet.SystemInitServlet
+	</listener-class>
+  </listener>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ModifyAtmServlet</servlet-name>
+    <servlet-class>com.suitong.mp.baidu.servlet.ModifyAtmServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ModifyAtmServlet</servlet-name>
+    <url-pattern>/ModifyAtmServlet</url-pattern>
+  </servlet-mapping>
+  
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
