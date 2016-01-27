@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hro.core.common.log.MsvrLog;
 import com.hro.core.common.util.EhCacheSingleton;
+import com.hro.core.common.util.HttpRequestUtil;
 import com.hro.core.common.util.StringUtil;
 import com.hro.core.model.UserModel;
 
@@ -30,7 +33,7 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value="/login.do", method=RequestMethod.POST)
-	public @ResponseBody Map<String,Object> login(@RequestBody Map<String,Object> params){
+	public @ResponseBody Map<String,Object> login(@RequestBody Map<String,Object> params, HttpServletRequest request){
 		String userName = StringUtil.toString(params.get("username"));
 		String passwd = StringUtil.toString(params.get("passwd"));
 		
@@ -49,6 +52,9 @@ public class UserController {
 		Map<String,Object> rtMap = new HashMap<String,Object>();
 		rtMap.put("username", userName);
 		rtMap.put("passwd", passwd);
+		
+		MsvrLog.info("[UserController.login] userName->"+userName+" passwd->"+passwd+" request->"+HttpRequestUtil.getServerIp(request)+":"+ request.getServerPort());
+		
 		return rtMap;
 	}
 	
