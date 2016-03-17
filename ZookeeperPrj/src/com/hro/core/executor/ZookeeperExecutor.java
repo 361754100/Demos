@@ -3,10 +3,13 @@ package com.hro.core.executor;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
+import org.apache.zookeeper.ZooDefs.Ids;
 import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.data.Stat;
 
 import com.hro.core.monitor.DataMonitor;
 import com.hro.core.monitor.DataMonitorListener;
@@ -24,18 +27,39 @@ public class ZookeeperExecutor implements Watcher, Runnable, DataMonitorListener
 		this.fileName = fileName;
 		this.exec = exec;
 		this.zooKeeper = new ZooKeeper(hostPort, 3000, this);
+		this.znode = znode;
+		
 		dataMonitor = new DataMonitor(this.zooKeeper, znode, null, this);
 	}
 	
 	@Override
 	public void run() {
+//		try {
+//			synchronized (this) {
+//				while(!dataMonitor.isDead()){
+//					wait();
+//				}
+//			}
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
 		try {
-			synchronized (this) {
-				while(!dataMonitor.isDead()){
-					wait();
-				}
+			Stat stat = this.zooKeeper.exists(znode, true);
+			if(stat == null){
+				this.zooKeeper.create(znode, "hello zooKeeper!".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+			}else {
+				byte bytes[] = this.zooKeeper.getData(znode, true, stat);
+				String msg = new String(bytes);
+				System.out.println("[ZookeeperExecutor.run] msg->"+msg);
+				
+				this.zooKeeper.setData(znode, "hello zooKeeper555!".getBytes(), -1);
+				
 			}
+		} catch (KeeperException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

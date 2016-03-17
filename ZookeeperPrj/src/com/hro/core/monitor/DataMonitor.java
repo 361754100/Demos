@@ -69,6 +69,7 @@ public class DataMonitor implements Watcher, StatCallback{
 
 	@Override
 	public void process(WatchedEvent event) {
+		System.out.println("[DataMonitor.process] event->"+event);
 		String path = event.getPath();
 		if(event.getType() == Event.EventType.None){
 			// We are are being told that the state of the
@@ -92,7 +93,7 @@ public class DataMonitor implements Watcher, StatCallback{
 					//Server is disconnect
 					dead = true;
 					listener.serverDisconnect(KeeperException.Code.ConnectionLoss);
-					System.out.println("[DataMonitor.process] state->Expired");
+					System.out.println("[DataMonitor.process] state->Disconnected");
 					break;
 			}
 		} else {
